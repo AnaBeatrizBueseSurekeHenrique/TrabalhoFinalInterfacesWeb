@@ -1,21 +1,25 @@
 (function () {
-  const txtNome = document.getElementById("txtNome");
   const formulario = document.getElementById("formulario");
-  const messagemFeedback = document.getElementById("messagemFeedback");
-  const messagemFeedbackBotaoFechar =
-    messagemFeedback.getElementsByTagName("button")[0];
-  const imagemFoto = document.getElementById("imagemFoto");
-  const botaoProximo = document.getElementById("botaoProximo");
+  const txtNome = document.getElementById("txtNome");
   const descricao = document.getElementById("descricao");
+  const imagemFoto = document.getElementById("imagemFoto");
+   
   const inocente = document.getElementById("inocente");
   const culpado = document.getElementById("culpado");
-  const resultado = document.getElementById("resultado");
+  const botaoProximo = document.getElementById("botaoProximo");
   const botaoIniciar = document.getElementById("iniciar");
+  
+  const resultado = document.getElementById("resultado");
   const contadorContainer = document.getElementById("contador");
   const rest = contadorContainer.getElementsByTagName("span")[0];
   const maxima = 15;
+  
   const tabela = resultado.getElementsByTagName("table")[0];
-  let julgamentoArray = new Array();
+  const messagemFeedback = document.getElementById("messagemFeedback");
+  const messagemFeedbackBotaoFechar =
+    messagemFeedback.getElementsByTagName("button")[0];
+  
+    let julgamentoArray = new Array();
   let userName;
   let quantidade = 0;
 

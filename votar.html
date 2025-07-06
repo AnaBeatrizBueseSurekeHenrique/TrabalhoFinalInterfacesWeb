@@ -45,12 +45,16 @@
           <div class="label">
             <label for="txtNome">Insira aqui seu nome:</label>
           </div>
-          <input
-            type="text"
-            id="txtNome"
-            name="txtNome"
-            placeholder="Digite aqui!"
-          />
+          <div class="armazenaInput">
+            <input
+              type="text"
+              id="txtNome"
+              name="txtNome"
+              placeholder="Digite aqui!"
+              maxlength="15"
+            />
+            <div id="contador"><span>15 caracteres</span></div>
+          </div>
           <div class="botao">
             <input
               type="submit"
@@ -76,7 +80,7 @@
               <input type="checkbox" name="inocente" id="inocente" />
             </div>
             <div>
-              <label for="culpado">Culpado  </label>
+              <label for="culpado">Culpado </label>
               <input type="checkbox" name="culpado" id="culpado" />
             </div>
           </form>
@@ -86,22 +90,49 @@
         </div>
       </div>
       <div id="resultado" class="grid-container">
-        <div>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-        </div>
-        <div>
-          <p>Julgamento original: 50% Culpada, 50% Inocente</p>
-          <p>Julgamento original: Culpado</p>
-          <p>Julgamento original: Culpada</p>
-          <p>Julgamento original: Culpado</p>
-          <p>Julgamento original: Culpada</p>
-          <p>Julgamento original: Inocente</p>
-        </div>
+        <table>
+          <caption>
+            Resultados
+          </caption>
+          <thead>
+            <th>Personagem</th>
+            <th>Voto de</th>
+            <th>Voto Original</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kogami Sumi</td>
+              <td>.</td>
+              <td>Julgamento: Culpada</td>
+            </tr>
+            <tr>
+              <td>Shiranami Ryōichirō</td>
+              <td>.</td>
+              <td>Julgamento: Culpado</td>
+            </tr>
+            <tr>
+              <td>Kawai Naki</td>
+              <td>.</td>
+              <td>Julgamento: Culpada</td>
+            </tr>
+            <tr>
+              <td>Shiranami Aiba</td>
+              <td>.</td>
+              <td>Julgamento: Culpada</td>
+            </tr>
+            <tr>
+              <td>Unabara Shin</td>
+              <td>.</td>
+              <td>Julgamento: Culpado</td>
+            </tr>
+            <tr>
+              <td>Himori Tōchi</td>
+              <td>.</td>
+              <td>Julgamento: Inocente</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="botao"><button><a href="votar.html">Votar Novamente</a></button></div>
       </div>
       <div id="messagemFeedback">
         <div>

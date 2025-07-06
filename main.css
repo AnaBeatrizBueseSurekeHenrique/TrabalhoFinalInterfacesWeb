@@ -201,8 +201,9 @@ footer {
   margin-top: 3em;
   left: 0;
   bottom: 0;
-  width: 100%;
+  padding: 1em;
 }
+
 /*CSS MAIN.HTML*/
 .fotoContainer {
   width: 90vw;
@@ -270,26 +271,28 @@ footer {
   }
 }
 
-/*Tabelas: */
+/*CSS ESTATISTICAS */
 .tabelas {
   flex-direction: column;
   align-items: center;
 }
-.linhaTabelas,
+.tabelas .linhaTabelas,
 table {
   width: 90%;
   color: var(--white);
 }
-.linhaTabelas {
+.tabelas .linhaTabelas {
   box-shadow: 0px 1px 0 var(--black);
 }
-table {
+table{
   border-collapse: collapse;
+}
+.tabelas table {
   background-image: linear-gradient(240deg, #242741, #131027);
   font-size: 0.9em;
 }
 
-th {
+.tabelas th {
   border: 1px solid white;
 }
 
@@ -306,56 +309,56 @@ th {
   color: var(--red);
 }
 
-td {
+.tabelas td {
   border: 1px solid white;
   text-align: center;
-}
-
-thead {
-  letter-spacing: 1px;
-}
-
-td {
   padding: 0.3em;
 }
 
-caption {
+.tabelas thead {
+  letter-spacing: 1px;
+}
+
+
+.tabelas caption {
   margin: 1em;
   font-size: 1.4em;
   text-transform: uppercase;
   letter-spacing: 0.5em;
 }
 
-hr {
+.tabelas hr {
   border-top: 1px solid var(--white);
   margin: 1em;
 }
 
 @media screen and (min-width: 48.75em) {
-  table {
+  .tabelas table {
     width: fit-content;
     font-size: 1em;
   }
-  th,
-  td {
+  .tabelas th,
+  .tabelas td {
     padding: 1em;
   }
 }
-/*Informacoes*/
+/*CSS INFORMACOES*/
 
 button,
 input[type="submit"] {
   cursor: pointer;
 }
 
-.imagens-novel,
 .containerFotoInformacao,
 .imagemTrailer {
   width: inherit;
 }
+.imagens-novel{
+  width: 45vw;
+}
 .containerFotoInformacao,
 .caixaDescricao,
-.botaoEscolha, .descricacaoDaEscolha {
+.botaoEscolha, .descricaDaEscolha, .divFotoInfo {
   grid-column: 1/-1;
 }
 .containerFotoInformacao {
@@ -389,26 +392,22 @@ input[type="submit"] {
   background-color: color-mix(in srgb, var(--blue), var(--black) 60%);
   color: color-mix(in srgb, var(--white), var(--black) 30%);
 }
-
-.fotoSelecao.show {
-  width: 70vw;
-}
-
-@media screen and (min-width: 48.75em) {
-  .fotoSelecao.show {
-    width: 40vw;
-  }
-}
-
 .divFotoInfo {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
+.fotoSelecao.show {
+  width: 70vw;
+}
+
+
+
 @media screen and (min-width: 48.73em) {
   .caixaDescricao {
     grid-column: span 1;
-    width: inherit;
+    width: auto;
     padding: 1em;
     border: 1px solid var(--white);
     height: auto;
@@ -420,33 +419,38 @@ input[type="submit"] {
   .opcional {
     grid-column: span 1;
   }
+  .fotoBalanca{
+    box-shadow: 15px 1px 5px var(--black);
+  }
+  .fotoSelecao.show {
+    width: 40vw;
+  }
+  .descricaoDaEscolha{
+    grid-column: span 1;
+  }
 }
-/*Votar*/
+/*CSS VOTOS*/
+.armazenaInput{
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.botao, .label,.armazenaInput, .formContainer{
+  grid-column: 1/-1;
+}
 
 .botao {
-  grid-column: 1/-1;
   display: flex;
   justify-content: center;
 }
-.botao button {
-  background-color: var(--red);
-  color: var(--white);
-  font-size: 3em;
-  font-family: "Courier New", Courier, monospace;
-  border: none;
-  border-radius: 100px;
-  padding: 0 1em;
-  box-shadow: 2px 2px 2px 2px var(--black), -0.5px -0.5px 2px 2px var(--black);
-  text-shadow: 1px 1px var(--black);
-}
-.botao button:hover {
-  background-color: color-mix(in srgb, var(--red), var(--black) 20%);
-  color: color-mix(in srgb, var(--white), var(--black) 20%);
-}
+
 .label {
-  grid-column: 1/-1;
+  width: 90%;
   text-align: center;
 }
+
+
 input[type="text"],
 input[type="submit"] {
   background-color: var(--black);
@@ -455,8 +459,8 @@ input[type="submit"] {
 }
 
 input[type="text"] {
+  width: 90%;
   padding: 0.5em 0.5em;
-  grid-column: 1/-1;
   border-radius: 5px;
 }
 input[type="submit"] {
@@ -477,18 +481,38 @@ input[type="text"]:focus {
 input[type="submit"]:hover {
   background-color: color-mix(in srgb, var(--white), var(--black) 60%);
 }
+.botao button {
+  min-width: 50vw;
+  max-width: 90vw;
+
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 2em;
+  font-family: "Courier New", Courier, monospace;
+  border: none;
+  border-radius: 100px;
+  padding: 0 1em;
+  box-shadow: 2px 2px 2px 2px var(--black), -0.5px -0.5px 2px 2px var(--black);
+  text-shadow: 1px 1px var(--black);
+}
+
+form {
+  margin: 0.5em 0;
+}
+
+.botao button:hover {
+  background-color: color-mix(in srgb, var(--red), var(--black) 20%);
+  color: color-mix(in srgb, var(--white), var(--black) 20%);
+}
 
 .formContainer label {
   font-weight: 200;
   letter-spacing: 0.2em;
 }
-form {
-  margin: 0.5em 0;
-}
+
 .formContainer {
   margin-top: 0.5em;
-  grid-column: 1/-1;
-  height: 10vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -513,82 +537,119 @@ form {
   box-shadow: 0em 0.5em 1em black;
   width: 50vw;
 }
+
 #messagemFeedback div {
   width: inherit;
   text-align: center;
 }
+
 #messagemFeedback p {
   margin-top: 0 1em;
   margin-right: 0.51em;
 }
+
 #messagemFeedback button {
   background-color: transparent;
   border: none;
   font-size: 1.25em;
   color: var(--red);
 }
+
 #messagemFeedback button:focus {
   border: none;
   outline: none;
   color: color-mix(in srgb, var(--red), var(--white) 60%);
 }
+
 #messagemFeedback.show {
   transform: translateY(0px);
 }
 
 .informacao1.hide {
   transform: translateY(-100vh);
+  position: absolute;
 }
 
 .informacao2 {
-  height: 90%;
+  grid-template-rows: 1fr;
   position: absolute;
   transform: translateY(-200vh);
+  gap: 2em;
+  align-items: center;
+  margin-top: 3em;
 }
+
 .informacao2.show {
-  left: 1;
-  gap: 10vh;
+  position:static;
   transform: translateY(0);
 }
-#resultado {
-  border: 1px solid var(--black);
-  position: absolute;
-  transform: translateY(-100vh);
-}
-
-#resultado.show {
-  transform: translateY(0);
-}
-
 .fotoVoto {
-  height: 392px;
+  height: 24.5em;
   border-radius: 10px;
   border: 3px double var(--white);
   box-shadow: 1em 1em 0.8em var(--black);
 }
 
-@media screen and (min-width: 48.75em) {
-  .label {
+#resultado {
+  border: 1px solid var(--white);
+  position: absolute;
+  transform: translateY(-100vh);
+  padding: 2em 1em;
+  background-image: linear-gradient(transparent, color-mix(in srgb, var(--blue), transparent 50%));
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  box-shadow: 1px 5px 3px var(--black);
+}
+#resultado.show {
+  transform: translateY(0);
+}
+#resultado th{
+  border: 1px solid var(--white);
+}
+#resultado td{
+  padding: 0.4em;
+  border: 1px solid var(--white);
+}
+#resultado caption{
+  font-size: 1.6em;
+  text-shadow: 1px 1px 3px var(--black);
+  margin-bottom: 1em;
+}
+#resultado .botao{
+  width: 50%;
+  font-size: 0.8em;
+}
+
+@media screen and (min-width: 53em) {
+  .label, .fotoContainer {
     grid-column: 1/2;
   }
-  input[type="text"] {
+
+  .armazenaInput, .formContainer, .descricaoContainer {
     grid-column: 2/3;
   }
+
   .fotoContainer {
     width: inherit;
-    grid-column: 1/2;
     display: flex;
     justify-content: center;
   }
   .formContainer {
     height: auto;
-    grid-column: 2/3;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .descricaoContainer {
-    grid-column: 2/3;
+  .informacao2 {
+    grid-template-rows: repeat(3, auto);
+
   }
+  .botao button {
+    font-size: 3em;
+  }
+
 }

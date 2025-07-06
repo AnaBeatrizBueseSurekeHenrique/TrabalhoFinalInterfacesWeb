@@ -11,7 +11,10 @@
   const culpado = document.getElementById("culpado");
   const resultado = document.getElementById("resultado");
   const botaoIniciar = document.getElementById("iniciar");
-  resultado.getElementsByTagName("p");
+  const contadorContainer = document.getElementById("contador");
+  const rest = contadorContainer.getElementsByTagName("span")[0];
+  const maxima = 15;
+  const tabela = resultado.getElementsByTagName("table")[0];
   let julgamentoArray = new Array();
   let userName;
   let quantidade = 0;
@@ -46,6 +49,17 @@
     messagemFeedback.addEventListener("click", hideErrorMesage);
     messagemFeedback.addEventListener("keyup", pressedKeyboardOnBtn);
   }
+  mostrarNumero(maxima);
+  function checkLenght() {
+    let numeroLetrasDigitadas = this.value.length;
+    let caracteresRestantes =
+      parseInt(maxima) - parseInt(numeroLetrasDigitadas);
+    mostrarNumero(caracteresRestantes);
+  }
+  function mostrarNumero(n) {
+    rest.textContent = n;
+  }
+  txtNome.addEventListener("input", checkLenght);
   botaoIniciar.addEventListener("click", function () {
     const itens = document.getElementsByClassName("informacao1");
     if (userName == null) {
@@ -62,8 +76,8 @@
       }
       quantidade = quantidade + 1;
       imagemFoto.src = "/fotos/julgamento/Kogami-Sumi.webp";
-      descricao.innerHTML =
-        "Ela resolveu ignorar os problemas ao seu redor e fingiu os desconhecer. Isso fez com que ela fosse idolatrada por colegas contra sua vontade, causando a sua morte, o que ao, catalizou a morte de outras 2 pessoas.";
+      descricao.innerText =
+        "Kogami Sumi.Ela resolveu ignorar os problemas ao seu redor e fingiu os desconhecer. Isso fez com que ela fosse idolatrada por colegas contra sua vontade, causando a sua morte, o que ao fim, catalizou a morte de outras 2 pessoas.";
     }
   });
   botaoProximo.addEventListener("click", function () {
@@ -77,27 +91,28 @@
       switch (quantidade) {
         case 2:
           imagemFoto.src = "/fotos/julgamento/Shiranami-Ryōichirō.webp";
-          descricao.innerHTML =
-            "Quando sua irmã mais nova estava em coma, escolheu que iria matá-la para salvá-la de sua dor. Entretanto, resolveu que iria treinar com qualquer outra pessoa antes de fazer isso. Saiu uma noite em busca de matar alguém, e acabou matando um homem que encontrou na rua, salvando a vida de uma mulher: o homem iria matá-la caso ele não tivesse intervido.";
+          descricao.innerText =
+            "Shiranami Ryōichirō. Iria matar sua irmã que estava em coma. Entretanto, resolveu que iria treinar com qualquer outra pessoa. Saiu uma noite em busca de matar alguém, e acabou matando um homem, salvando a vida de uma mulher: o homem iria matá-la caso ele não tivesse intervido.";
           break;
         case 3:
           imagemFoto.src = "/fotos/julgamento/Kawai-Naki.webp";
-          descricao.innerHTML =
-            "Sua única amiga foi morta. Após o ocorrido, outra pessoa tentou se aproximar dela, de mesma forma que sua amiga havia o feito. Após receber informações que indicavam que essa pessoa causou sua morte, ela o matou sem que ele pudesse dar explicações.";
+          descricao.innerText =
+            "Kawai Naki. Sua única amiga foi morta. Após o ocorrido, outra pessoa tentou se aproximar dela, de mesma forma que sua amiga havia o feito. Após receber informações que indicavam que essa pessoa causou sua morte, ela o matou sem que ele pudesse dar explicações.";
           break;
         case 4:
           imagemFoto.src = "/fotos/julgamento/Shiranami-Aiba.webp";
-          descricao.innerHTML =
-            "Traiu sua amiga para apoiar o garoto que gostava, mesmo sabendo que ele não reciprocava, isso causou a morte dela. Quando ela descobriu, passou a informação do ocorrido para outra pessoa, o que causou a morte do garoto.";
+          descricao.innerText =
+            "Shiranami Aiba. Traiu sua amiga para apoiar o garoto que gostava, mesmo sabendo que ele não reciprocava, isso causou a morte dela. Quando ela descobriu, passou a informação do ocorrido para outra pessoa, o que causou a morte do garoto.";
           break;
         case 5:
           imagemFoto.src = "/fotos/julgamento/Unabara-Shin.webp";
-          descricao.innerHTML = "Idolatrava uma pessoa e tentou fazer com que os outros fizessem o mesmo. A idolatria deles lentamente se tornou em ódio, o que causou a morte desta pessoa.";
+          descricao.innerText =
+            "Unabara Shin. Idolatrava uma pessoa e tentou fazer com que os outros fizessem o mesmo. A idolatria deles lentamente se tornou em ódio, o que causou a morte desta pessoa.";
           break;
         case 6:
           imagemFoto.src = "/fotos/julgamento/Himori-Tōchi.png";
-          descricao.innerHTML =
-            "Uma pessoa havia se acidentado, e estavam ambos em uma sala trancada. Pessoas estavam lá fora implorando para ele abrir a porta para salvá-la, mas ela implorou para ele não abrir, pois não queria que a vissem assim. Ele não abriu a porta, e a pessoa morreu.";
+          descricao.innerText =
+            "Himori Tōchi. Uma pessoa havia se acidentado, e estavam ambos em uma sala trancada. Pessoas estavam lá fora implorando para ele abrir a porta para salvá-la, mas ela implorou para ele não abrir, pois não queria que a vissem assim. Ele não abriu a porta, e a pessoa morreu.";
           break;
         case 7:
           this.disabled = true;
@@ -123,12 +138,15 @@
     }
   });
   function resultadoFinal(resultado, julgamentoArray) {
-    for (let i = 1; i < 6; i++) {
-      console.log(i);
-      resultado.getElementsByTagName("p")[
-        i
-      ].innerHTML = `Julgamento de ${userName} para ${i}: ${
-        julgamentoArray[i] ? "inocente" : "culpado"
+    tabela
+      .getElementsByTagName("thead")[0]
+      .getElementsByTagName("th")[1].innerText = `Voto de ${userName}`;
+    const tbody = tabela.getElementsByTagName("tbody")[0];
+    for (let i = 0; i < 6; i++) {
+      tbody
+        .getElementsByTagName("tr")
+        [i].getElementsByTagName("td")[1].innerText = `Julgamento: ${
+        julgamentoArray[i] ? "Inocente" : "Culpado"
       }`;
     }
   }
